@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import RatingSelection from '../components/RatingSelection';
 import Button from '../components/Button';
 import { enviarFeedback } from '../services/api';
+import Logo from '../components/Logo';
 
 const FeedbackPage = () => {
     // Estado inicial do formulário
@@ -55,9 +56,8 @@ const FeedbackPage = () => {
             const response = await enviarFeedback(formData); // Chamada da API
 
             alert('Feedback enviado com sucesso!');
-            setFormData(initialFormState);  // Limpa o formulário após o envio bem-sucedido
+            setFormData(initialFormState);  
 
-            // Atualiza a página (opcional: você pode remover isso se não quiser recarregar completamente a página)
             window.location.reload();
 
         } catch (error) {
@@ -66,14 +66,17 @@ const FeedbackPage = () => {
     };
 
     return (
-        <div className="container mx-auto px-4">
-            <h1 className="text-2xl font-bold mb-4 mt-10">Queremos Saber Sua Opinião!</h1>
-            <p>Ajude-nos a melhorar sua experiência na Barraca Chico do Caranguejo! Avalie nossos serviços e diga
-                 o que podemos fazer para tornar seu próximo 
-                 dia de praia ainda melhor.</p>
-            
+        <div className="  mx-auto px-4 flex flex-col items-center justify-center bg-[url('../src/assets/fundo.avif')] bg-cover bg-center ">
+            <div className='w-{30rem} flex items-center p-3'>
+                <Logo>  </Logo>
+                <div>
+                <h1 className="text-2xl font-bold mb-4 ">Queremos Saber Sua <br /> Opinião!</h1>
+
+                </div>
+
+            </div>
+
             <form onSubmit={handleSubmit} className="mt-6">
-                {/* Campos de nome, estado e email */}
                 <div className="mb-4">
                     <label htmlFor="name" className="block text-sm font-medium">Nome:</label>
                     <input
@@ -113,7 +116,14 @@ const FeedbackPage = () => {
                     />
                 </div>
 
-                {/* Perguntas de avaliação com números de 1 a 5 */}
+                            <div  className='w-72 '>
+            <p className='text-sm'>Ajude-nos a melhorar sua experiência na Barraca Chico do Caranguejo! Avalie nossos serviços e diga
+                 o que podemos fazer para tornar seu próximo 
+                 dia de praia ainda melhor.</p>
+            
+            </div>
+
+
                 <RatingSelection 
                     question="Qualidade do Atendimento" 
                     onChange={(rating) => handleRatingChange('question1', rating)} 
