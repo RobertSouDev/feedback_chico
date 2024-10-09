@@ -1,6 +1,5 @@
 const pesquisaModel = require('../models/pesquisaModel');
 
-// Pegando todas as pesquisas
 exports.getPesquisas = async (req, res) => {
     try {
         const pesquisas = await pesquisaModel.getAllPesquisas();
@@ -10,7 +9,6 @@ exports.getPesquisas = async (req, res) => {
     }
 };
 
-// Criando uma nova pesquisa
 exports.createPesquisa = async (req, res) => {
     try {
         const novaPesquisa = req.body;
