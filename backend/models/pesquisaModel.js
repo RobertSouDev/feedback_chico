@@ -1,6 +1,5 @@
-const db = require('../db');  // Importa a conexão do banco de dados
+const db = require('../db');  
 
-// Função para obter todas as pesquisas
 exports.getAllPesquisas = async () => {
     try {
         const result = await db.query('SELECT * FROM feedback');
@@ -11,17 +10,15 @@ exports.getAllPesquisas = async () => {
     }
 };
 
-// Função para adicionar uma nova pesquisa
 exports.addPesquisa = async (pesquisa) => {
-    const { name, state, email, question1, question2, question3, critica = null } = pesquisa;
-    // 'created_at' será gerado automaticamente
+    const { name, state, email, question1, question2, question3, question4, question5, critica = null } = pesquisa;
     try {
         const query = `
-            INSERT INTO feedback (name, state, email, question1, question2, question3, created_at, critica)
-            VALUES ($1, $2, $3, $4, $5, $6, NOW(), $7)
+            INSERT INTO feedback (name, state, email, question1, question2, question3, question4, question5, created_at, critica)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW(), $9)
             RETURNING *;
         `;
-        const values = [name, state, email, question1, question2, question3, critica];
+        const values = [name, state, email, question1, question2, question3, question4, question5, critica];
 
         const result = await db.query(query, values);
         return result.rows[0];

@@ -5,7 +5,6 @@ import { enviarFeedback } from '../services/api';
 import Logo from '../components/Logo';
 
 const FeedbackPage = () => {
-    // Estado inicial do formulário
     const initialFormState = {
         name: '',
         state: '',
@@ -20,7 +19,6 @@ const FeedbackPage = () => {
 
     const [formData, setFormData] = useState(initialFormState);
 
-    // Função para lidar com inputs de texto (nome, estado, email e crítica)
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -29,7 +27,6 @@ const FeedbackPage = () => {
         });
     };
 
-    // Função para armazenar as respostas numéricas de 1 a 5
     const handleRatingChange = (question, rating) => {
         setFormData({
             ...formData,
@@ -37,11 +34,9 @@ const FeedbackPage = () => {
         });
     };
 
-    // Função para envio do formulário
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validação simples para garantir que todos os campos obrigatórios foram preenchidos
         if (!formData.name || !formData.state || !formData.email) {
             alert('Por favor, preencha todos os campos obrigatórios.');
             return;
@@ -146,7 +141,7 @@ const FeedbackPage = () => {
                     onChange={(rating) => handleRatingChange('question5', rating)} 
                 />
 
-                {/* Campo de crítica aberta (opcional) */}
+                
                 <div className="mt-4">
                     <label htmlFor="critica" className="block text-sm font-medium">Sugestões e Melhorias (opcional):</label>
                     <textarea
@@ -159,7 +154,6 @@ const FeedbackPage = () => {
                     />
                 </div>
 
-                {/* Botão de envio */}
                 <div className="mb-6">
                     <Button text="Enviar" />
                 </div>
