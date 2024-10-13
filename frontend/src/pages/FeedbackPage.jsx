@@ -94,16 +94,45 @@ const FeedbackPage = () => {
 
                 <div className="mb-4">
                     <label htmlFor="state" className="block text-sm font-medium">Estado:</label>
-                    <input
-                        type="text"
+                    <select
                         id="state"
                         name="state"
                         value={formData.state}
                         onChange={handleInputChange}
                         className="w-full p-2 border bg-gray-200 rounded-md focus:outline-none focus:ring-0 border-none"
                         required
-                    />
+                    >
+                        <option value="">Selecione seu estado</option>
+                        <option value="AC">Acre (AC)</option>
+                        <option value="AL">Alagoas (AL)</option>
+                        <option value="AP">Amapá (AP)</option>
+                        <option value="AM">Amazonas (AM)</option>
+                        <option value="BA">Bahia (BA)</option>
+                        <option value="CE">Ceará (CE)</option>
+                        <option value="DF">Distrito Federal (DF)</option>
+                        <option value="ES">Espírito Santo (ES)</option>
+                        <option value="GO">Goiás (GO)</option>
+                        <option value="MA">Maranhão (MA)</option>
+                        <option value="MT">Mato Grosso (MT)</option>
+                        <option value="MS">Mato Grosso do Sul (MS)</option>
+                        <option value="MG">Minas Gerais (MG)</option>
+                        <option value="PA">Pará (PA)</option>
+                        <option value="PB">Paraíba (PB)</option>
+                        <option value="PR">Paraná (PR)</option>
+                        <option value="PE">Pernambuco (PE)</option>
+                        <option value="PI">Piauí (PI)</option>
+                        <option value="RJ">Rio de Janeiro (RJ)</option>
+                        <option value="RN">Rio Grande do Norte (RN)</option>
+                        <option value="RS">Rio Grande do Sul (RS)</option>
+                        <option value="RO">Rondônia (RO)</option>
+                        <option value="RR">Roraima (RR)</option>
+                        <option value="SC">Santa Catarina (SC)</option>
+                        <option value="SP">São Paulo (SP)</option>
+                        <option value="SE">Sergipe (SE)</option>
+                        <option value="TO">Tocantins (TO)</option>
+                    </select>
                 </div>
+
 
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-sm font-medium">Email:</label>
@@ -165,7 +194,7 @@ const FeedbackPage = () => {
                     <img
         src="src/assets/pie-chart-animate.svg"
         alt="Gráfico de pizza"
-        className="w-64 h-64"
+        className="w-64 h-46"
       />
             </div>
                         <h2 className="text-2xl font-semibold mb-4">Obrigado por sua avaliação!</h2>
