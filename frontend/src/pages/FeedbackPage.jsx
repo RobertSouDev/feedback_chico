@@ -190,13 +190,7 @@ const FeedbackPage = () => {
             {showModal && (
                 <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
                     <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div className="mb-4">
-                    <img
-        src="src/assets/pie-chart-animate.svg"
-        alt="Gráfico de pizza"
-        className="w-64 h-46"
-      />
-            </div>
+                  
                         <h2 className="text-2xl font-semibold mb-4">Obrigado por sua avaliação!</h2>
                         <button
                             onClick={() => setShowModal(false)}
