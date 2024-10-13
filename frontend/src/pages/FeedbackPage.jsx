@@ -18,6 +18,7 @@ const FeedbackPage = () => {
     };
 
     const [formData, setFormData] = useState(initialFormState);
+    const [showModal, setShowModal] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -50,10 +51,11 @@ const FeedbackPage = () => {
         try {
             const response = await enviarFeedback(formData); // Chamada da API
 
-            alert('Feedback enviado com sucesso!');
-            setFormData(initialFormState);  
-
-            window.location.reload();
+            setShowModal(true);  // Exibir modal de sucesso
+           // setTimeout(() => {
+            //    setShowModal(false);  // Fechar o modal após 3 segundos
+            //    setFormData(initialFormState);  // Limpar o formulário
+            //}, 50000);
 
         } catch (error) {
             alert('Erro ao enviar feedback. Tente novamente.');
@@ -63,12 +65,12 @@ const FeedbackPage = () => {
     return (
         <div className="  mx-auto px-4 flex flex-col items-center justify-center bg-[url('../src/assets/fundo2.avif')] bg-cover bg-center ">
             <div className='w-{30rem}  items-center p-3'>
-                <Logo>  </Logo>
+                <Logo />
                 <div>
                 <h1 className="text-2xl font-bold mb-4 ">Queremos Saber Sua <br /> Opinião!</h1>
 
                 </div>
-                <div  className='w-72 '>
+                <div className='w-72 '>
             <p className='text-sm'>Ajude-nos a melhorar sua experiência na Barraca Chico do Caranguejo! Avalie nossos serviços e diga
                  o que podemos fazer para tornar seu próximo 
                  dia de praia ainda melhor.</p>
@@ -116,9 +118,6 @@ const FeedbackPage = () => {
                     />
                 </div>
 
-
-
-
                 <RatingSelection 
                     question="Qualidade do Atendimento" 
                     onChange={(rating) => handleRatingChange('question1', rating)} 
@@ -158,6 +157,27 @@ const FeedbackPage = () => {
                     <Button text="Enviar" />
                 </div>
             </form>
+
+            {showModal && (
+                <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <div className="mb-4">
+                    <img
+        src="src/assets/pie-chart-animate.svg"
+        alt="Gráfico de pizza"
+        className="w-64 h-64"
+      />
+            </div>
+                        <h2 className="text-2xl font-semibold mb-4">Obrigado por sua avaliação!</h2>
+                        <button
+                            onClick={() => setShowModal(false)}
+                            className="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                        >
+                            OK
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'https://p5zqaemgax.us-east-2.awsapprunner.com/api/pesquisa'; // Substitua pela sua URL de backend
-
+//const API_URL = 'http://localhost:3000/api/pesquisa';
 export const enviarFeedback = async (dados) => {
     try {
         const response = await axios.post(API_URL, dados);
