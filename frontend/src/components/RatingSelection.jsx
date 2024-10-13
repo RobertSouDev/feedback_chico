@@ -11,12 +11,13 @@ const RatingSelection = ({ question, onChange }) => {
 
     // Array de emojis com os valores associados
     const emojis = [
-        { emoji: '😠', value: 1 },
-        { emoji: '😏', value: 2 },
+        { emoji: '😢', value: 1 },
+        { emoji: '️😕', value: 2 },
         { emoji: '😐', value: 3 },
         { emoji: '🙂', value: 4 },
         { emoji: '😍', value: 5 },
     ];
+    
 
     return (
         <div className="my-4">
