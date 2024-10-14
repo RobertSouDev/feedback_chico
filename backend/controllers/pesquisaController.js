@@ -3,6 +3,7 @@ const pesquisaModel = require('../models/pesquisaModel');
 exports.getPesquisas = async (req, res) => {
     try {
         const pesquisas = await pesquisaModel.getAllPesquisas();
+        console.log(pesquisas)
         res.json(pesquisas);
     } catch (err) {
         res.status(500).json({ message: 'Erro ao buscar pesquisas', error: err });
