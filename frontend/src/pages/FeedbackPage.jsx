@@ -56,7 +56,7 @@ export default function FeedbackPage(){
             setTimeout(() => {
                 window.location.reload(); 
                 
-            }, 1000);
+            }, 3000);
     
         } catch (error) {
             alert('Erro ao enviar feedback. Tente novamente.');
