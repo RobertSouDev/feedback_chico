@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CardLogin() {
-    const [login, setLogin] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [token, setToken] = useState(null);
+    const navigate = useNavigate(); // Hook para redirecionamento
+
+    useEffect(() => {
+        if (token) {
+            // Armazena o token no localStorage apenas quando o token for definido
+            localStorage.setItem('token', token);
+            alert('Login realizado com sucesso!');
+            navigate('/home'); // Redireciona para a página home
+        }
+    }, [token, navigate]); // O useEffect será executado apenas quando o token mudar
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         try {
-            const response = await axios.post('https://p5zqaemgax.us-east-2.awsapprunner.com/api/auth/login', {
-                login: login,
+            const response = await axios.post('http://localhost:3000/api/auth/login', {
+                username: username,
                 password: password
             });
 
-            // Verifica se a resposta contém o token e salva no localStorage
+            // Verifica se a resposta contém o token
             if (response.data && response.data.token) {
-                localStorage.setItem('token', response.data.token);
-                alert('Login realizado com sucesso!');
+                setToken(response.data.token); // Define o token e dispara o useEffect
             } else {
                 setError('Token não encontrado na resposta.');
             }
@@ -34,11 +45,11 @@ export default function CardLogin() {
                 <div className="mb-6 w-full">
                     <input
                         type="text"
-                        name="login"
-                        placeholder="login"
+                        name="username"
+                        placeholder="username"
                         required
-                        value={login}
-                        onChange={(e) => setLogin(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
