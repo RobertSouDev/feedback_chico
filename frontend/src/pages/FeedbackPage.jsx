@@ -37,30 +37,32 @@ export default function FeedbackPage(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!formData.name || !formData.state || !formData.email) {
             alert('Por favor, preencha todos os campos obrigatórios.');
             return;
         }
-
+    
         if (!formData.question1 || !formData.question2 || !formData.question3 || !formData.question4 || !formData.question5) {
             alert('Por favor, responda todas as perguntas de avaliação.');
             return;
         }
-
+    
         try {
-            const response = await enviarFeedback(formData); // Chamada da API
-
-            setShowModal(true);  // Exibir modal de sucesso
-           // setTimeout(() => {
-            //    setShowModal(false);  // Fechar o modal após 3 segundos
-            //    setFormData(initialFormState);  // Limpar o formulário
-            //}, 50000);
-
+            const response = await enviarFeedback(formData);
+    
+            setShowModal(true); 
+    
+            setTimeout(() => {
+                window.location.reload(); 
+                
+            }, 1000);
+    
         } catch (error) {
             alert('Erro ao enviar feedback. Tente novamente.');
         }
     };
+    
 
     return (
         <div className="  mx-auto px-4 flex flex-col items-center justify-center bg-[url('../src/assets/fundo2.avif')] bg-cover bg-center ">
