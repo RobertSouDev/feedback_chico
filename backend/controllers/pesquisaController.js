@@ -1,6 +1,6 @@
 const pesquisaModel = require('../models/pesquisaModel');
 
-exports.getPesquisas = async (req, res) => {
+const getPesquisas = async (req, res) => {
     try {
         const pesquisas = await pesquisaModel.getAllPesquisas();
         console.log(pesquisas)
@@ -10,7 +10,7 @@ exports.getPesquisas = async (req, res) => {
     }
 };
 
-exports.createPesquisa = async (req, res) => {
+const createPesquisa = async (req, res) => {
     try {
         const novaPesquisa = req.body;
         const createdPesquisa = await pesquisaModel.addPesquisa(novaPesquisa);
@@ -19,3 +19,7 @@ exports.createPesquisa = async (req, res) => {
         res.status(500).json({ message: 'Erro ao adicionar pesquisa', error: err });
     }
 };
+
+module.exports = {
+    getPesquisas, createPesquisa
+}

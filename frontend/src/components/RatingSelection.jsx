@@ -4,12 +4,12 @@ const RatingSelection = ({ question, onChange }) => {
     const [rating, setRating] = useState(null);
 
     const handleRating = (e, value) => {
-        e.preventDefault();  // Evita o comportamento padrão de submissão
+        e.preventDefault();  
         setRating(value);
-        onChange(value); // Passa o valor selecionado de volta ao pai
+        onChange(value); 
     };
 
-    // Array de emojis com os valores associados
+    
     const emojis = [
         { emoji: '😢', value: 1 },
         { emoji: '️😕', value: 2 },
