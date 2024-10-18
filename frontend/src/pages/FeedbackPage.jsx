@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import { enviarFeedback } from '../services/api';
 import Logo from '../components/Logo';
 
-const FeedbackPage = () => {
+export default function FeedbackPage(){
     const initialFormState = {
         name: '',
         state: '',
@@ -205,4 +205,4 @@ const FeedbackPage = () => {
     );
 };
 
-export default FeedbackPage;
+

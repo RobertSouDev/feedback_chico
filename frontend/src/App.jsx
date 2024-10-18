@@ -1,10 +1,10 @@
 import React from 'react';
-import FeedbackPage from './pages/FeedbackPage';
+import AppRoutes from './routes/AppRoutes';
 
 const App = () => {
   return (
     <div className="App">
-      <FeedbackPage />
+      <AppRoutes/>
     </div>
   );
 };
