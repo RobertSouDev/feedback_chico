@@ -1,7 +1,12 @@
+import Header from "../components/Header";
+import Main from "../components/Main";
+
 export default function HomePage(){
     return (
         <>
-            <h1>Home seja bem vindo</h1>
+            <Header/>
+            <Main/>
+
         </>
     )
 }

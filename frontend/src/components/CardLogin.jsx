@@ -20,7 +20,7 @@ export default function CardLogin() {
         e.preventDefault();
         
         try {
-            const response = await axios.post('http://localhost:3000/api/auth/login', {
+            const response = await axios.post('https://svrrp5p343.us-east-1.awsapprunner.com/api/auth/login', {
                 username: username,
                 password: password
             });
