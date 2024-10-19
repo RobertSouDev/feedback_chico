@@ -16,6 +16,7 @@ const authController = {
       const user = rows[0];
 
       if (password !== user.password) {
+        console.log("Senha incorreta.")
         return res.status(401).json({ message: 'Senha incorreta.' });
       }
 

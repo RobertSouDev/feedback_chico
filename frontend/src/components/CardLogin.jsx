@@ -7,16 +7,14 @@ export default function CardLogin() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [token, setToken] = useState(null);
-    const navigate = useNavigate(); // Hook para redirecionamento
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         if (token) {
-            // Armazena o token no localStorage apenas quando o token for definido
             localStorage.setItem('token', token);
-            alert('Login realizado com sucesso!');
-            navigate('/home'); // Redireciona para a página home
+            navigate('/home'); 
         }
-    }, [token, navigate]); // O useEffect será executado apenas quando o token mudar
+    }, [token, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,9 +25,8 @@ export default function CardLogin() {
                 password: password
             });
 
-            // Verifica se a resposta contém o token
             if (response.data && response.data.token) {
-                setToken(response.data.token); // Define o token e dispara o useEffect
+                setToken(response.data.token);
             } else {
                 setError('Token não encontrado na resposta.');
             }
